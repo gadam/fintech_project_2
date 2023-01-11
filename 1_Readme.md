@@ -21,13 +21,19 @@ We pulled the daily historical data from Yahoo Finance API and chose 3 Exchange 
 
 
 # Indicators
-We used Dual Moving Average Crossover Indicator to generage the buying and selling signals. 
+We tested Dual Moving Average Crossover Indicator and Bollinger Bands to generate the buying and selling signals. 
 > DMA is  based on the idea that when the shorter-term moving average crosses above the longer-term moving average, it is a buy signal, and when the shorter-term moving average crosses below the longer-term moving average, it is a sell signal.
 
-# Short window and Long window
-we selected 50 day window as short window and long window of 200 window. This was optimized in relation to the closing prices movement. Changing the short window to anything lower than 50 days made the movement of the short window trend line closer to the closing prices 
+<br/>
 
-# Calculate the simple moving average of ETFs
+> Bollinger Bands indicator consists of a moving average, usually the 20-day moving average, and two standard deviation lines plotted above and below the moving average. These lines create a band around the price of a security, and the width of the band varies based on volatility. The bands are used to indicate overbought and oversold conditions and to identify changes in volatility. When the price of a security is close to the upper band, it is considered overbought, and when it is close to the lower band, it is considered oversold. Additionally, when the Bollinger Bands are expanding, it can indicate increasing volatility, and when they are contracting, it can indicate decreasing volatility.
+
+<br/>
+
+# Dual Moving Average Crossover for entry and exit points
+We selected 50 day window as short window and long window of 200 window. This was optimized in relation to the closing prices movement. Changing the short window to anything lower than 50 days made the movement of the short window trend line closer to the closing prices 
+
+# Calculate Dual Moving Simple Moving Average Crossover of ETFs
 
 We used Finta (Financial Technical Analysis) Python Library to calculate the Simple moving averages for the ETFs
 
@@ -54,23 +60,48 @@ spy_etf_df["Entry/Exit"] = spy_etf_df["Signal"].diff()
 
 spy_etf_df.head()
 ```
-
+#### ** 
 
 <br/>
 
-### Visualize the results of the indicators as entry and exit points 
+
+### Visualize the results of DMAC as entry and exit points 
 
 After plotting three individual charts for short window, long window, closing prices and moving averages
 
-
-
 #### SPY ETF
-![SPY Entry and Exit Chart]()
+![SPY DMAC Entry and Exit Chart](./images/sp500_dmac.png)
 #### STW ETF
-![STW Entry and Exit Chart]()
+![STW DMAC Entry and Exit Chart](./images/asx200_dmac.png)
 #### VAS ETF
-![VAS Entry and Exit Chart]()
+![VAS DMAC Entry and Exit Chart](./images/vas_dmac.png)
+
 <br/>
+
+# Bollinger Bands for entry and exit points
+We used Finta Bollinger Bands Library to use BB indicators and calculate the Upper, Middle and Lower bands. The result was then concatenated with closing price to plot the charts overlayed on each other 
+
+```
+# Determine the Bollinger Bands for the Dataset
+spy_bbands_df = TA.BBANDS(spy_bb_signals_df)
+
+# Review the DataFrame
+
+spy_bbands_df = spy_bbands_df.dropna()
+spy_bbands_df.head()
+```
+<br/>
+
+### Visualize the results of Bollinger Bands as entry and exit points 
+#### SPY ETF
+
+![SPY Bollinger Bands Entry and Exit Chart](./images/sp500_bb.png)
+#### STW ETF
+![STW Bollinger Bands Entry and Exit Chart](./images/asx200_bb.png)
+#### VAS ETF
+![VAS Bollinger Bands Entry and Exit Chart](./images/vas_bb.png)
+
+
 # Natural Language Processing
 
 We used Natural language processing (NLP) for news sentiment analysis, and followed the following steps: 
@@ -94,15 +125,17 @@ Using Dual Moving Average Indicators with a 50 day short window and 100 day long
 
 NLP anlaysis returned 80% of the sentiment as neutral while 10% was Positive buy and 10% analysis was Negative sell signal.
 
+
+
 <br/>
 
-![Composite Plot]()
+![NLP Frequency Plot](./images/sp500_nlp_freq.png)
 [Numerical summary]
 
 <br/>
 
-### DMAC and NLP Plot
-![DMAC and NLP Entry and Exit Chart]()
+### DMAC and NLP Entry and Exit chart
+![DMAC and NLP Entry and Exit Chart](./images/sp500_nlp_signals.png)
 
 ## References
 
