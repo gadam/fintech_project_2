@@ -1,11 +1,17 @@
 
-![BANNER](Picture%202.png)
+![BANNER](./images/Picture%201.png)
 
 # Introduction
  Stock traders repeatedly analyse stock market historical price movements and related News for calculated trading. Manually analysing this data has become impractical, hence investors ask for a faster method through automation.  By providing large amount of data, machine learning algorithms explore the News sentiment and use the prescribed model to predict the optimum price for trading. 
 
+ <br/>
+
+
 # Objective
- Use Dual moving average crossover indicator and Natural Language Processing to predict Exchange Traded Funds index direction of asset prices and forecast future prices based on market sentiments by analyzing News.
+ Build an algorithm evaluating the technical indicators such as 'Dual moving average crossover' and 'Bollinger Bands' indicator and use 'Natural Language Processing' to analyze the sentiments of News headlines of key assets underlying the ETFs. Therefore, forecasting the future prices of ETFs.
+
+ <br/>
+
 
 # Methodology
 1. Collect historical data on ETFs that will include features such as closing price, volume, day high and low-price points
@@ -18,6 +24,7 @@
 
 We pulled the daily historical data from Yahoo Finance API and chose 3 Exchange Traded Funds SPY, STW, and VAS (S&P500, S&P/ASX 200, and Vanguard Australian Shares Index) traded in Australia. The time period is from 02/01/2008 to 03/01/2023. The dataset is composed of 6 variables: date, opening price of the day, highest price of the day, lowest price of the day, closing price of the day, traded volume. We used the closing price of the data for our project to calculate the simple moving average of the ETFs
 
+<br/>
 
 
 # Indicators
@@ -32,6 +39,9 @@ We tested Dual Moving Average Crossover Indicator and Bollinger Bands to generat
 
 # Dual Moving Average Crossover for entry and exit points
 We selected 50 day window as short window and long window of 200 window. This was optimized in relation to the closing prices movement. Changing the short window to anything lower than 50 days made the movement of the short window trend line closer to the closing prices 
+
+<br/>
+
 
 # Calculate Dual Moving Simple Moving Average Crossover of ETFs
 
@@ -101,6 +111,7 @@ spy_bbands_df.head()
 #### VAS ETF
 ![VAS Bollinger Bands Entry and Exit Chart](./images/vas_bb.png)
 
+<br/>
 
 # Natural Language Processing
 
@@ -136,6 +147,9 @@ NLP anlaysis returned 80% of the sentiment as neutral while 10% was Positive buy
 
 ### DMAC and NLP Entry and Exit chart
 ![DMAC and NLP Entry and Exit Chart](./images/sp500_nlp_signals.png)
+
+<br/>
+
 
 ## References
 
