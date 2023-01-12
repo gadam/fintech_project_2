@@ -153,6 +153,7 @@ In order to use this `Jupyter Lab` notebook, the packages below are pre-requisit
 
 ## References
 
+0. [Link to slide pack](https://docs.google.com/presentation/d/1dlZHXhdb-KBmnS8wdPR1mceN4KJUw-QL/edit?usp=share_link&ouid=117361159969264442816&rtpof=true&sd=true)
 1. [Hugging face](https://huggingface.co/mrm8488/distilroberta-finetuned-financial-news-sentiment-analysis)
 2. [ChatGPT](https://chat.openai.com/chat)
 3. [Alpaca SDK](https://alpaca.markets/)
